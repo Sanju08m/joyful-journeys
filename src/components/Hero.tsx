@@ -24,7 +24,7 @@ const Hero = () => {
         </div>
 
         {/* College Name */}
-        <p className="text-foreground/70 uppercase tracking-[0.2em] text-sm mb-4">
+        <p className="text-foreground uppercase tracking-[0.2em] text-sm mb-4">
           Asian College
         </p>
 
