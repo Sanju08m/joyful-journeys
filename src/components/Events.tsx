@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X } from "lucide-react";
 import eventTechnical from "@/assets/event-technical.jpg";
 import eventNontechnical from "@/assets/event-nontechnical.jpg";
 import eventGroup from "@/assets/event-group.jpg";
@@ -53,27 +53,16 @@ const events = [
 
 const Events = () => {
   const [activeCategory, setActiveCategory] = useState<keyof typeof eventData | null>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   const openSlider = (key: keyof typeof eventData) => {
     setActiveCategory(key);
-    setCurrentSlide(0);
   };
 
   const closeSlider = () => {
     setActiveCategory(null);
-    setCurrentSlide(0);
   };
 
   const slideList = activeCategory ? eventData[activeCategory] : [];
-
-  const nextSlide = () => {
-    if (currentSlide < slideList.length - 1) setCurrentSlide(currentSlide + 1);
-  };
-
-  const prevSlide = () => {
-    if (currentSlide > 0) setCurrentSlide(currentSlide - 1);
-  };
 
   return (
     <section id="events" className="py-20">
@@ -110,86 +99,44 @@ const Events = () => {
         </div>
       </div>
 
-      {/* Full-screen Slide Overlay */}
+      {/* Full-screen overlay showing all events */}
       {activeCategory && (
-        <div className="fixed inset-0 z-50 backdrop-blur-xl bg-background/80">
+        <div className="fixed inset-0 z-50 backdrop-blur-xl bg-background/80 overflow-y-auto">
           {/* Close button */}
           <button
             onClick={closeSlider}
-            className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full border border-gold/30 bg-card/80 flex items-center justify-center text-foreground/70 hover:text-foreground hover:bg-card transition-colors"
+            className="fixed top-6 right-6 z-20 w-10 h-10 rounded-full border border-gold/30 bg-card/80 flex items-center justify-center text-foreground/70 hover:text-foreground hover:bg-card transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
 
-          {/* Category title */}
-          <div className="absolute top-6 left-6 z-10">
-            <h3 className="font-display text-xl text-gold">
+          <div className="container mx-auto px-6 py-20">
+            {/* Category title */}
+            <h3 className="font-display text-3xl text-gold text-center mb-10">
               {events.find((e) => e.key === activeCategory)?.title}
             </h3>
-            <p className="text-foreground/50 text-sm">
-              {currentSlide + 1} of {slideList.length}
-            </p>
-          </div>
 
-          {/* Slides container */}
-          <div className="h-full flex items-center justify-center px-16">
-            {/* Left arrow */}
-            {slideList.length > 1 && (
-              <button
-                onClick={prevSlide}
-                disabled={currentSlide === 0}
-                className="absolute left-4 z-10 w-12 h-12 rounded-full border border-gold/30 bg-card/60 flex items-center justify-center text-gold disabled:opacity-20 hover:bg-gold/10 transition-colors disabled:hover:bg-card/60"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-            )}
-
-            {/* Slide */}
-            <div
-              key={currentSlide}
-              className="w-full max-w-md animate-fade-in"
-            >
-              <div className="bg-card border border-gold/20 rounded-3xl overflow-hidden shadow-2xl shadow-gold/10">
-                <div className="relative h-56 bg-gradient-to-br from-gold/20 via-gold-dark/10 to-background flex items-center justify-center">
-                  <span className="text-8xl drop-shadow-lg">{slideList[currentSlide].icon}</span>
+            {/* All events grid */}
+            <div className={`grid gap-6 max-w-4xl mx-auto ${
+              slideList.length === 1 ? "grid-cols-1 max-w-md" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+            }`}>
+              {slideList.map((item, i) => (
+                <div
+                  key={item.name}
+                  className="bg-card border border-gold/20 rounded-2xl overflow-hidden shadow-xl shadow-gold/5 animate-fade-in"
+                  style={{ animationDelay: `${i * 100}ms`, animationFillMode: "both" }}
+                >
+                  <div className="h-36 bg-gradient-to-br from-gold/20 via-gold-dark/10 to-background flex items-center justify-center">
+                    <span className="text-6xl drop-shadow-lg">{item.icon}</span>
+                  </div>
+                  <div className="p-6 text-center">
+                    <h4 className="font-display text-xl text-gold mb-2">{item.name}</h4>
+                    <p className="text-foreground/60 text-sm">{item.description}</p>
+                  </div>
                 </div>
-                <div className="p-10 text-center">
-                  <h3 className="font-display text-3xl text-gold mb-4">
-                    {slideList[currentSlide].name}
-                  </h3>
-                  <p className="text-foreground/60 text-lg leading-relaxed">
-                    {slideList[currentSlide].description}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right arrow */}
-            {slideList.length > 1 && (
-              <button
-                onClick={nextSlide}
-                disabled={currentSlide === slideList.length - 1}
-                className="absolute right-4 z-10 w-12 h-12 rounded-full border border-gold/30 bg-card/60 flex items-center justify-center text-gold disabled:opacity-20 hover:bg-gold/10 transition-colors disabled:hover:bg-card/60"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            )}
-          </div>
-
-          {/* Dot indicators */}
-          {slideList.length > 1 && (
-            <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-3">
-              {slideList.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentSlide(i)}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${
-                    i === currentSlide ? "bg-gold w-8" : "bg-foreground/30 w-2.5 hover:bg-foreground/50"
-                  }`}
-                />
               ))}
             </div>
-          )}
+          </div>
         </div>
       )}
     </section>
