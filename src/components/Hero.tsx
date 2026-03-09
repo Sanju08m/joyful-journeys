@@ -39,7 +39,7 @@ const Hero = () => {
         </h1>
 
         {/* Presented By */}
-        <p className="text-foreground/60 uppercase tracking-widest text-xs mb-2 mt-6">
+        <p className="text-foreground uppercase tracking-widest text-xs mb-2 mt-6">
           Proudly Presented by
         </p>
         <p className="text-gold font-display text-lg tracking-wide mb-8">
