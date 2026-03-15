@@ -3,14 +3,19 @@ import { X } from "lucide-react";
 import eventTechnical from "@/assets/event-technical.jpg";
 import eventNontechnical from "@/assets/event-nontechnical.jpg";
 import eventGroup from "@/assets/event-group.jpg";
+import eventPpt from "@/assets/event-ppt.jpeg";
+import eventReverse from "@/assets/event-reverse.jpeg";
+import eventBrain from "@/assets/event-brain.jpeg";
+import eventDebugg from "@/assets/event-debugg.jpeg";
+import eventUi from "@/assets/event-ui.jpeg";
 
 const eventData = {
   technical: [
-    { name: "PPT Presentation", icon: "📊", description: "Present your ideas with impact and creativity" },
-    { name: "Reverse Coding", icon: "🔄", description: "Decode the output and find the original code" },
-    { name: "Brain Quiz", icon: "🧠", description: "Test your knowledge in a rapid-fire tech quiz" },
-    { name: "Debugging", icon: "🐛", description: "Find and fix bugs under time pressure" },
-    { name: "UI Designing", icon: "🎨", description: "Design stunning interfaces from scratch" },
+    { name: "PPT Presentation", icon: "📊", description: "Present your ideas with impact and creativity", image: eventPpt },
+    { name: "Reverse Coding", icon: "🔄", description: "Decode the output and find the original code", image: eventReverse },
+    { name: "Brain Quiz", icon: "🧠", description: "Test your knowledge in a rapid-fire tech quiz", image: eventBrain },
+    { name: "Debugging", icon: "🐛", description: "Find and fix bugs under time pressure", image: eventDebugg },
+    { name: "UI Designing", icon: "🎨", description: "Design stunning interfaces from scratch", image: eventUi },
   ],
   nonTechnical: [
     { name: "Treasure Hunt", icon: "🗺️", description: "Follow clues and race to find the hidden treasure" },
