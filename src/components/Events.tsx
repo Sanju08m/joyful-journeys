@@ -131,8 +131,14 @@ const Events = () => {
                   className="bg-card border border-gold/20 rounded-2xl overflow-hidden shadow-xl shadow-gold/5 animate-fade-in"
                   style={{ animationDelay: `${i * 100}ms`, animationFillMode: "both" }}
                 >
-                  <div className="h-36 bg-gradient-to-br from-gold/20 via-gold-dark/10 to-background flex items-center justify-center">
-                    <span className="text-6xl drop-shadow-lg">{item.icon}</span>
+                  <div className="h-36 overflow-hidden">
+                    {'image' in item && item.image ? (
+                      <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="h-full bg-gradient-to-br from-gold/20 via-gold-dark/10 to-background flex items-center justify-center">
+                        <span className="text-6xl drop-shadow-lg">{item.icon}</span>
+                      </div>
+                    )}
                   </div>
                   <div className="p-6 text-center">
                     <h4 className="font-display text-xl text-gold mb-2">{item.name}</h4>
