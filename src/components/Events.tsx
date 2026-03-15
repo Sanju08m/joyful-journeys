@@ -132,7 +132,7 @@ const Events = () => {
                   style={{ animationDelay: `${i * 100}ms`, animationFillMode: "both" }}
                 >
                   <div className="h-36 overflow-hidden">
-                    {'image' in item && item.image ? (
+                    {item.image ? (
                       <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                     ) : (
                       <div className="h-full bg-gradient-to-br from-gold/20 via-gold-dark/10 to-background flex items-center justify-center">
