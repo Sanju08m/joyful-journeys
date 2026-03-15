@@ -3,24 +3,29 @@ import { X } from "lucide-react";
 import eventTechnical from "@/assets/event-technical.jpg";
 import eventNontechnical from "@/assets/event-nontechnical.jpg";
 import eventGroup from "@/assets/event-group.jpg";
+import eventPpt from "@/assets/event-ppt.jpeg";
+import eventReverse from "@/assets/event-reverse.jpeg";
+import eventBrain from "@/assets/event-brain.jpeg";
+import eventDebugg from "@/assets/event-debugg.jpeg";
+import eventUi from "@/assets/event-ui.jpeg";
 
 const eventData = {
   technical: [
-    { name: "PPT Presentation", icon: "📊", description: "Present your ideas with impact and creativity" },
-    { name: "Reverse Coding", icon: "🔄", description: "Decode the output and find the original code" },
-    { name: "Brain Quiz", icon: "🧠", description: "Test your knowledge in a rapid-fire tech quiz" },
-    { name: "Debugging", icon: "🐛", description: "Find and fix bugs under time pressure" },
-    { name: "UI Designing", icon: "🎨", description: "Design stunning interfaces from scratch" },
+    { name: "PPT Presentation", icon: "📊", description: "Present your ideas with impact and creativity", image: eventPpt },
+    { name: "Reverse Coding", icon: "🔄", description: "Decode the output and find the original code", image: eventReverse },
+    { name: "Brain Quiz", icon: "🧠", description: "Test your knowledge in a rapid-fire tech quiz", image: eventBrain },
+    { name: "Debugging", icon: "🐛", description: "Find and fix bugs under time pressure", image: eventDebugg },
+    { name: "UI Designing", icon: "🎨", description: "Design stunning interfaces from scratch", image: eventUi },
   ],
   nonTechnical: [
-    { name: "Treasure Hunt", icon: "🗺️", description: "Follow clues and race to find the hidden treasure" },
-    { name: "Power Lift", icon: "💪", description: "Show your strength in this physical challenge" },
-    { name: "Logo Guess", icon: "🔍", description: "Identify famous logos and brands" },
-    { name: "IPL Auction", icon: "🏏", description: "Bid, strategize, and build your dream team" },
-    { name: "E-Sportz", icon: "🎮", description: "Compete in thrilling esports battles" },
+    { name: "Treasure Hunt", icon: "🗺️", description: "Follow clues and race to find the hidden treasure", image: "" },
+    { name: "Power Lift", icon: "💪", description: "Show your strength in this physical challenge", image: "" },
+    { name: "Logo Guess", icon: "🔍", description: "Identify famous logos and brands", image: "" },
+    { name: "IPL Auction", icon: "🏏", description: "Bid, strategize, and build your dream team", image: "" },
+    { name: "E-Sportz", icon: "🎮", description: "Compete in thrilling esports battles", image: "" },
   ],
   group: [
-    { name: "Talent Show", icon: "🌟", description: "Showcase your team's unique talents on stage" },
+    { name: "Talent Show", icon: "🌟", description: "Showcase your team's unique talents on stage", image: "" },
   ],
 };
 
@@ -126,8 +131,14 @@ const Events = () => {
                   className="bg-card border border-gold/20 rounded-2xl overflow-hidden shadow-xl shadow-gold/5 animate-fade-in"
                   style={{ animationDelay: `${i * 100}ms`, animationFillMode: "both" }}
                 >
-                  <div className="h-36 bg-gradient-to-br from-gold/20 via-gold-dark/10 to-background flex items-center justify-center">
-                    <span className="text-6xl drop-shadow-lg">{item.icon}</span>
+                  <div className="h-36 overflow-hidden">
+                    {item.image ? (
+                      <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="h-full bg-gradient-to-br from-gold/20 via-gold-dark/10 to-background flex items-center justify-center">
+                        <span className="text-6xl drop-shadow-lg">{item.icon}</span>
+                      </div>
+                    )}
                   </div>
                   <div className="p-6 text-center">
                     <h4 className="font-display text-xl text-gold mb-2">{item.name}</h4>
