@@ -18,14 +18,14 @@ const eventData = {
     { name: "UI Designing", icon: "🎨", description: "Design stunning interfaces from scratch", image: eventUi },
   ],
   nonTechnical: [
-    { name: "Treasure Hunt", icon: "🗺️", description: "Follow clues and race to find the hidden treasure" },
-    { name: "Power Lift", icon: "💪", description: "Show your strength in this physical challenge" },
-    { name: "Logo Guess", icon: "🔍", description: "Identify famous logos and brands" },
-    { name: "IPL Auction", icon: "🏏", description: "Bid, strategize, and build your dream team" },
-    { name: "E-Sportz", icon: "🎮", description: "Compete in thrilling esports battles" },
+    { name: "Treasure Hunt", icon: "🗺️", description: "Follow clues and race to find the hidden treasure", image: "" },
+    { name: "Power Lift", icon: "💪", description: "Show your strength in this physical challenge", image: "" },
+    { name: "Logo Guess", icon: "🔍", description: "Identify famous logos and brands", image: "" },
+    { name: "IPL Auction", icon: "🏏", description: "Bid, strategize, and build your dream team", image: "" },
+    { name: "E-Sportz", icon: "🎮", description: "Compete in thrilling esports battles", image: "" },
   ],
   group: [
-    { name: "Talent Show", icon: "🌟", description: "Showcase your team's unique talents on stage" },
+    { name: "Talent Show", icon: "🌟", description: "Showcase your team's unique talents on stage", image: "" },
   ],
 };
 
