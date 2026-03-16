@@ -133,42 +133,18 @@ const Events = () => {
                 {slideList.map((item, i) => (
                  <div
                    key={item.name}
-                   className="bg-card border border-gold/20 rounded-2xl overflow-hidden shadow-xl shadow-gold/5 animate-fade-in"
+                   className="overflow-hidden rounded-2xl animate-fade-in"
                    style={{ animationDelay: `${i * 100}ms`, animationFillMode: "both" }}
                  >
-                   {activeCategory === "technical" ? (
-                     <>
-                       <div className="h-36 overflow-hidden">
-                         <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                       </div>
-                       <div className="p-6 text-center">
-                         <h4 className="font-display text-xl text-gold mb-2">{item.name}</h4>
-                         <p className="text-foreground/60 text-sm">{item.description}</p>
-                       </div>
-                     </>
-                   ) : activeCategory === "nonTechnical" ? (
-                      <div className="overflow-hidden">
-                        <img src={item.image} alt={item.name} className="w-full h-auto" />
-                     </div>
+                   {item.image ? (
+                     <img src={item.image} alt={item.name} className="w-full h-auto" />
                    ) : (
-                     <>
-                       <div className="h-36 overflow-hidden">
-                         {item.image ? (
-                           <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                         ) : (
-                           <div className="h-full bg-gradient-to-br from-gold/20 via-gold-dark/10 to-background flex items-center justify-center">
-                             <span className="text-6xl drop-shadow-lg">{item.icon}</span>
-                           </div>
-                         )}
-                       </div>
-                       <div className="p-6 text-center">
-                         <h4 className="font-display text-xl text-gold mb-2">{item.name}</h4>
-                         <p className="text-foreground/60 text-sm">{item.description}</p>
-                       </div>
-                     </>
+                     <div className="h-48 bg-gradient-to-br from-gold/20 via-gold-dark/10 to-background flex items-center justify-center">
+                       <span className="text-6xl drop-shadow-lg">{item.icon}</span>
+                     </div>
                    )}
                  </div>
-               ))}
+                ))}
             </div>
           </div>
         </div>
