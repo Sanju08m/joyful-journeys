@@ -50,6 +50,7 @@ const Index = () => {
       <Events />
       <Contact />
       <Developers />
+      <Chatbot />
       <Footer />
     </div>
   );
