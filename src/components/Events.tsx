@@ -13,6 +13,7 @@ import eventPowerlift from "@/assets/event-powerlift.jpg";
 import eventLogoguess from "@/assets/event-logoguess.jpg";
 import eventIpl from "@/assets/event-ipl.jpg";
 import eventEsports from "@/assets/event-esports.jpg";
+import eventTalentshow from "@/assets/event-talentshow.jpeg";
 
 const eventData = {
   technical: [
@@ -30,7 +31,7 @@ const eventData = {
     { name: "E-Sportz", icon: "🎮", description: "Compete in thrilling esports battles", image: eventEsports },
   ],
   group: [
-    { name: "Talent Show", icon: "🌟", description: "Showcase your team's unique talents on stage", image: "" },
+    { name: "Talent Show", icon: "🌟", description: "Showcase your team's unique talents on stage", image: eventTalentshow },
   ],
 };
 
