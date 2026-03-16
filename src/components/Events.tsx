@@ -8,6 +8,11 @@ import eventReverse from "@/assets/event-reverse.jpeg";
 import eventBrain from "@/assets/event-brain.jpeg";
 import eventDebugg from "@/assets/event-debugg.jpeg";
 import eventUi from "@/assets/event-ui.jpeg";
+import eventTreasure from "@/assets/event-treasure.jpg";
+import eventPowerlift from "@/assets/event-powerlift.jpg";
+import eventLogoguess from "@/assets/event-logoguess.jpg";
+import eventIpl from "@/assets/event-ipl.jpg";
+import eventEsports from "@/assets/event-esports.jpg";
 
 const eventData = {
   technical: [
@@ -18,11 +23,11 @@ const eventData = {
     { name: "UI Designing", icon: "🎨", description: "Design stunning interfaces from scratch", image: eventUi },
   ],
   nonTechnical: [
-    { name: "Treasure Hunt", icon: "🗺️", description: "Follow clues and race to find the hidden treasure", image: "" },
-    { name: "Power Lift", icon: "💪", description: "Show your strength in this physical challenge", image: "" },
-    { name: "Logo Guess", icon: "🔍", description: "Identify famous logos and brands", image: "" },
-    { name: "IPL Auction", icon: "🏏", description: "Bid, strategize, and build your dream team", image: "" },
-    { name: "E-Sportz", icon: "🎮", description: "Compete in thrilling esports battles", image: "" },
+    { name: "Treasure Hunt", icon: "🗺️", description: "Follow clues and race to find the hidden treasure", image: eventTreasure },
+    { name: "Power Lift", icon: "💪", description: "Show your strength in this physical challenge", image: eventPowerlift },
+    { name: "Logo Guess", icon: "🔍", description: "Identify famous logos and brands", image: eventLogoguess },
+    { name: "IPL Auction", icon: "🏏", description: "Bid, strategize, and build your dream team", image: eventIpl },
+    { name: "E-Sportz", icon: "🎮", description: "Compete in thrilling esports battles", image: eventEsports },
   ],
   group: [
     { name: "Talent Show", icon: "🌟", description: "Showcase your team's unique talents on stage", image: "" },
@@ -141,6 +146,10 @@ const Events = () => {
                          <p className="text-foreground/60 text-sm">{item.description}</p>
                        </div>
                      </>
+                   ) : activeCategory === "nonTechnical" ? (
+                     <div className="h-52 overflow-hidden">
+                       <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                     </div>
                    ) : (
                      <>
                        <div className="h-36 overflow-hidden">
