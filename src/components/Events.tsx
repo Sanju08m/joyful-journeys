@@ -30,7 +30,7 @@ const eventData = {
     { name: "E-Sportz", icon: "🎮", description: "Compete in thrilling esports battles", image: eventEsports },
   ],
   group: [
-    { name: "Talent Show", icon: "🌟", description: "Showcase your team's unique talents on stage", image: "" },
+    { name: "Talent Show", icon: "🌟", description: "Showcase your team's unique talents on stage", image: eventTalentshow },
   ],
 };
 
