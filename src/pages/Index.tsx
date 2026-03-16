@@ -6,6 +6,7 @@ import About from "@/components/About";
 import Events from "@/components/Events";
 import Contact from "@/components/Contact";
 import Developers from "@/components/Developers";
+import Chatbot from "@/components/Chatbot";
 import Footer from "@/components/Footer";
 
 const Index = () => {

@@ -13,6 +13,7 @@ import eventPowerlift from "@/assets/event-powerlift.jpg";
 import eventLogoguess from "@/assets/event-logoguess.jpg";
 import eventIpl from "@/assets/event-ipl.jpg";
 import eventEsports from "@/assets/event-esports.jpg";
+import eventTalentshow from "@/assets/event-talentshow.jpeg";
 
 const eventData = {
   technical: [
