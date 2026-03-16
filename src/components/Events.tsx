@@ -146,6 +146,10 @@ const Events = () => {
                          <p className="text-foreground/60 text-sm">{item.description}</p>
                        </div>
                      </>
+                   ) : activeCategory === "nonTechnical" ? (
+                     <div className="h-52 overflow-hidden">
+                       <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                     </div>
                    ) : (
                      <>
                        <div className="h-36 overflow-hidden">
