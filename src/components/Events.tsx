@@ -132,9 +132,15 @@ const Events = () => {
                    style={{ animationDelay: `${i * 100}ms`, animationFillMode: "both" }}
                  >
                    {activeCategory === "technical" ? (
-                     <div className="h-52 overflow-hidden">
-                       <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                     </div>
+                     <>
+                       <div className="h-36 overflow-hidden">
+                         <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                       </div>
+                       <div className="p-6 text-center">
+                         <h4 className="font-display text-xl text-gold mb-2">{item.name}</h4>
+                         <p className="text-foreground/60 text-sm">{item.description}</p>
+                       </div>
+                     </>
                    ) : (
                      <>
                        <div className="h-36 overflow-hidden">
