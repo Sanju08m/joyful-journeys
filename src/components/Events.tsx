@@ -8,6 +8,11 @@ import eventReverse from "@/assets/event-reverse.jpeg";
 import eventBrain from "@/assets/event-brain.jpeg";
 import eventDebugg from "@/assets/event-debugg.jpeg";
 import eventUi from "@/assets/event-ui.jpeg";
+import eventTreasure from "@/assets/event-treasure.jpg";
+import eventPowerlift from "@/assets/event-powerlift.jpg";
+import eventLogoguess from "@/assets/event-logoguess.jpg";
+import eventIpl from "@/assets/event-ipl.jpg";
+import eventEsports from "@/assets/event-esports.jpg";
 
 const eventData = {
   technical: [
