@@ -1,10 +1,13 @@
-import { Mail } from "lucide-react";
+import { Mail, Github, Linkedin } from "lucide-react";
+import devSanju from "@/assets/dev-sanju.jpeg";
 
 const developers = [
   {
     name: "Sanjay Kumar G",
-    initials: "SK",
+    image: devSanju,
     email: "ksanjay14796@gmail.com",
+    linkedin: "https://www.linkedin.com/in/sanju-m-2b176930b",
+    github: "https://github.com/Sanju08m",
   },
 ];
 
@@ -20,19 +23,21 @@ const Developers = () => {
               key={dev.name}
               className="bg-card rounded-lg p-6 border border-border text-center min-w-[250px] hover:border-gold/50 transition-colors"
             >
-              <div className="w-16 h-16 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-4">
-                <span className="font-display text-xl text-gold font-bold">
-                  {dev.initials}
-                </span>
+              <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border-2 border-gold/30">
+                <img src={dev.image} alt={dev.name} className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-display text-lg text-foreground mb-2">{dev.name}</h3>
-              <a
-                href={`mailto:${dev.email}`}
-                className="flex items-center justify-center gap-2 text-muted-foreground hover:text-gold transition-colors text-sm"
-              >
-                <Mail className="w-4 h-4" />
-                <span>{dev.email}</span>
-              </a>
+              <h3 className="font-display text-lg text-foreground mb-3">{dev.name}</h3>
+              <div className="flex items-center justify-center gap-4 mb-3">
+                <a href={dev.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-gold transition-colors">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href={dev.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-gold transition-colors">
+                  <Github className="w-5 h-5" />
+                </a>
+                <a href={`mailto:${dev.email}`} className="text-muted-foreground hover:text-gold transition-colors">
+                  <Mail className="w-5 h-5" />
+                </a>
+              </div>
             </div>
           ))}
         </div>
