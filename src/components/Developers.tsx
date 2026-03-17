@@ -6,11 +6,6 @@ const developers = [
     initials: "SK",
     email: "ksanjay14796@gmail.com",
   },
-  {
-    name: "Nithish Kumar S",
-    initials: "NK",
-    email: "nithishkumar080706@gmail.com",
-  },
 ];
 
 const Developers = () => {
