@@ -8,18 +8,21 @@ import Contact from "@/components/Contact";
 import Developers from "@/components/Developers";
 import Chatbot from "@/components/Chatbot";
 import Footer from "@/components/Footer";
+import IntroGate from "@/components/IntroGate";
 
 const Index = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [entered, setEntered] = useState(false);
 
   useEffect(() => {
+    if (!entered) return;
     const audio = audioRef.current;
     if (audio) {
       audio.volume = 0.3;
       audio.play().catch(() => {});
     }
-  }, []);
+  }, [entered]);
 
   const toggleMute = () => {
     const audio = audioRef.current;
@@ -33,6 +36,10 @@ const Index = () => {
       setIsMuted(!isMuted);
     }
   };
+
+  if (!entered) {
+    return <IntroGate onComplete={() => setEntered(true)} />;
+  }
 
   return (
     <div className="min-h-screen bg-background">
