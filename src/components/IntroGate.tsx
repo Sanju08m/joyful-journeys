@@ -60,7 +60,7 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
     <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden">
       {(phase === "prompt" || phase === "playing") && (
         <div className="text-center animate-fade-in flex flex-col items-center gap-8">
-          <h1 className="font-display text-2xl md:text-4xl text-gold/80 tracking-wider drop-shadow-[0_0_20px_hsl(var(--gold)/0.3)]">
+          <h1 className="font-display text-lg sm:text-2xl md:text-4xl lg:text-5xl text-gold/80 tracking-wider drop-shadow-[0_0_20px_hsl(var(--gold)/0.3)] px-4">
             Tap the Log Pose to enter
           </h1>
           <div
