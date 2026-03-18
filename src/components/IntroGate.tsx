@@ -62,13 +62,12 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
             }}
           >
             <video
-              autoPlay
-              loop
               muted
               playsInline
+              preload="metadata"
               className="w-56 h-56 md:w-72 md:h-72 object-contain rounded-full pointer-events-none"
             >
-              <source src="/videos/logpose.mp4" type="video/mp4" />
+              <source src="/videos/logpose.mp4#t=0.1" type="video/mp4" />
             </video>
           </div>
           {/* Tap indicators */}
