@@ -60,7 +60,7 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
     <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden">
       {(phase === "prompt" || phase === "playing") && (
         <div className="text-center animate-fade-in flex flex-col items-center gap-8">
-          <h1 className="font-display text-2xl md:text-4xl text-gold/80 tracking-wider drop-shadow-[0_0_20px_hsl(var(--gold)/0.3)]">
+          <h1 className="font-display text-lg sm:text-2xl md:text-4xl lg:text-5xl text-gold/80 tracking-wider drop-shadow-[0_0_20px_hsl(var(--gold)/0.3)] px-4">
             Tap the Log Pose to enter
           </h1>
           <div
@@ -78,7 +78,7 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
               playsInline
               loop
               preload="auto"
-              className="w-56 h-56 md:w-72 md:h-72 object-contain rounded-full pointer-events-none"
+              className="w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 object-contain rounded-full pointer-events-none"
             >
               <source src="/videos/logpose.mp4" type="video/mp4" />
             </video>
@@ -103,7 +103,7 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
             loop
             muted
             playsInline
-            className="w-56 h-56 md:w-72 md:h-72 object-contain rounded-full"
+            className="w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 object-contain rounded-full"
           >
             <source src="/videos/logpose.mp4" type="video/mp4" />
           </video>
