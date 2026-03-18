@@ -37,7 +37,7 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
         setTimeout(() => {
           setPhase("video");
         }, 1200);
-      }, 2000);
+      }, 4000);
     }
   }, [phase]);
 
