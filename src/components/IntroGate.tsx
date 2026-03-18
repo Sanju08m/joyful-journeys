@@ -103,7 +103,7 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
             loop
             muted
             playsInline
-            className="w-56 h-56 md:w-72 md:h-72 object-contain rounded-full"
+            className="w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 object-contain rounded-full"
           >
             <source src="/videos/logpose.mp4" type="video/mp4" />
           </video>
