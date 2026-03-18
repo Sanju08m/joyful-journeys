@@ -1,6 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
-type Phase = "prompt" | "breaking" | "video" | "done";
+type Phase = "prompt" | "playing" | "breaking" | "video" | "done";
 
 interface IntroGateProps {
   onComplete: () => void;
@@ -11,24 +11,35 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
   const [tapCount, setTapCount] = useState(0);
   const [shake, setShake] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const logposeRef = useRef<HTMLVideoElement>(null);
 
   const handleTap = () => {
     if (phase !== "prompt") return;
     const newCount = tapCount + 1;
     setTapCount(newCount);
 
-    // Shake effect on each tap
     setShake(true);
     setTimeout(() => setShake(false), 400);
 
     if (newCount >= 3) {
-      setPhase("breaking");
-      // After break animation, play intro video
-      setTimeout(() => {
-        setPhase("video");
-      }, 1200);
+      // Start playing the logpose GIF
+      setPhase("playing");
     }
   };
+
+  // When phase becomes "playing", play the logpose video then break it
+  useEffect(() => {
+    if (phase === "playing" && logposeRef.current) {
+      logposeRef.current.play();
+      // After playing for 2 seconds, break it
+      setTimeout(() => {
+        setPhase("breaking");
+        setTimeout(() => {
+          setPhase("video");
+        }, 1200);
+      }, 2000);
+    }
+  }, [phase]);
 
   const handleVideoEnd = () => {
     setPhase("done");
@@ -47,7 +58,7 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
 
   return (
     <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden">
-      {phase === "prompt" && (
+      {(phase === "prompt" || phase === "playing") && (
         <div className="text-center animate-fade-in flex flex-col items-center gap-8">
           <h1 className="font-display text-2xl md:text-4xl text-gold/80 tracking-wider drop-shadow-[0_0_20px_hsl(var(--gold)/0.3)]">
             Tap the Log Pose to enter
@@ -62,15 +73,16 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
             }}
           >
             <video
+              ref={logposeRef}
               muted
               playsInline
-              preload="metadata"
+              loop
+              preload="auto"
               className="w-56 h-56 md:w-72 md:h-72 object-contain rounded-full pointer-events-none"
             >
-              <source src="/videos/logpose.mp4#t=0.1" type="video/mp4" />
+              <source src="/videos/logpose.mp4" type="video/mp4" />
             </video>
           </div>
-          {/* Tap indicators */}
           <div className="flex gap-3">
             {[0, 1, 2].map((i) => (
               <div
@@ -95,7 +107,6 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
           >
             <source src="/videos/logpose.mp4" type="video/mp4" />
           </video>
-          {/* Crack/shatter particles */}
           {Array.from({ length: 12 }).map((_, i) => (
             <div
               key={i}
