@@ -97,27 +97,70 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
       )}
 
       {phase === "breaking" && (
-        <div className="flex items-center justify-center animate-[breakEffect_1.2s_ease-out_forwards]">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 object-cover rounded-full"
-          >
-            <source src="/videos/logpose.mp4" type="video/mp4" />
-          </video>
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-gold rounded-sm"
-              style={{
-                animation: `shard_${i % 4} 1s ease-out forwards`,
-                animationDelay: `${i * 0.05}s`,
-                opacity: 0,
-              }}
-            />
-          ))}
+        <div className="relative flex items-center justify-center">
+          {/* Crack overlay on the Log Pose */}
+          <div className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96">
+            {/* Split the logpose into fragments using clip-path */}
+            {shardFragments.map((shard, i) => (
+              <div
+                key={i}
+                className="absolute inset-0 overflow-hidden rounded-full"
+                style={{
+                  clipPath: shard.clip,
+                  animation: `fragment_fly_${i} 1.4s cubic-bezier(0.2, 0, 0.8, 1) forwards`,
+                  animationDelay: `${0.3 + i * 0.04}s`,
+                }}
+              >
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src="/videos/logpose.mp4" type="video/mp4" />
+                </video>
+              </div>
+            ))}
+
+            {/* Crack lines that appear before fragments fly */}
+            <svg
+              className="absolute inset-0 w-full h-full animate-[crackAppear_0.3s_ease-out_forwards]"
+              viewBox="0 0 100 100"
+              fill="none"
+            >
+              <line x1="50" y1="10" x2="50" y2="90" stroke="white" strokeWidth="0.8" opacity="0.9" />
+              <line x1="10" y1="50" x2="90" y2="50" stroke="white" strokeWidth="0.8" opacity="0.9" />
+              <line x1="20" y1="20" x2="80" y2="80" stroke="white" strokeWidth="0.6" opacity="0.7" />
+              <line x1="80" y1="20" x2="20" y2="80" stroke="white" strokeWidth="0.6" opacity="0.7" />
+              <line x1="50" y1="50" x2="15" y2="35" stroke="white" strokeWidth="0.5" opacity="0.5" />
+              <line x1="50" y1="50" x2="85" y2="30" stroke="white" strokeWidth="0.5" opacity="0.5" />
+            </svg>
+
+            {/* Flash on impact */}
+            <div className="absolute inset-0 rounded-full bg-white animate-[impactFlash_0.4s_ease-out_forwards]" />
+          </div>
+
+          {/* Tiny glass particles */}
+          {Array.from({ length: 20 }).map((_, i) => {
+            const angle = (i / 20) * 360;
+            const dist = 120 + Math.random() * 100;
+            const tx = Math.cos((angle * Math.PI) / 180) * dist;
+            const ty = Math.sin((angle * Math.PI) / 180) * dist;
+            return (
+              <div
+                key={`particle-${i}`}
+                className="absolute w-1 h-1 bg-gold/80 rounded-full"
+                style={{
+                  animation: `particleBurst 0.8s cubic-bezier(0.2, 0, 0.6, 1) forwards`,
+                  animationDelay: `${0.3 + i * 0.02}s`,
+                  opacity: 0,
+                  ['--tx' as string]: `${tx}px`,
+                  ['--ty' as string]: `${ty}px`,
+                }}
+              />
+            );
+          })}
         </div>
       )}
 
@@ -149,28 +192,25 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
           60% { transform: translateX(-6px) rotate(-2deg); }
           80% { transform: translateX(6px) rotate(2deg); }
         }
-        @keyframes breakEffect {
-          0% { transform: scale(1); opacity: 1; filter: brightness(1); }
-          30% { transform: scale(1.15); filter: brightness(2); }
-          60% { transform: scale(1.3); opacity: 0.8; filter: brightness(3) saturate(0); }
-          100% { transform: scale(2); opacity: 0; filter: brightness(4); }
+        @keyframes crackAppear {
+          0% { opacity: 0; transform: scale(0.8); }
+          100% { opacity: 1; transform: scale(1); }
         }
-        @keyframes shard_0 {
+        @keyframes impactFlash {
+          0% { opacity: 0.9; }
+          100% { opacity: 0; }
+        }
+        @keyframes particleBurst {
           0% { transform: translate(0, 0) scale(1); opacity: 1; }
-          100% { transform: translate(80px, -60px) scale(0); opacity: 0; }
+          100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
         }
-        @keyframes shard_1 {
-          0% { transform: translate(0, 0) scale(1); opacity: 1; }
-          100% { transform: translate(-70px, -80px) scale(0); opacity: 0; }
-        }
-        @keyframes shard_2 {
-          0% { transform: translate(0, 0) scale(1); opacity: 1; }
-          100% { transform: translate(90px, 50px) scale(0); opacity: 0; }
-        }
-        @keyframes shard_3 {
-          0% { transform: translate(0, 0) scale(1); opacity: 1; }
-          100% { transform: translate(-60px, 70px) scale(0); opacity: 0; }
-        }
+        ${shardFragments.map((shard, i) => `
+          @keyframes fragment_fly_${i} {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+            30% { transform: translate(${shard.tx * 0.2}px, ${shard.ty * 0.2}px) rotate(${shard.rot * 0.3}deg) scale(1); opacity: 1; }
+            100% { transform: translate(${shard.tx}px, ${shard.ty}px) rotate(${shard.rot}deg) scale(0.3); opacity: 0; }
+          }
+        `).join('')}
       `}</style>
     </div>
   );
