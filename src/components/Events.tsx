@@ -78,7 +78,7 @@ const Events = () => {
   return (
     <section id="events" className="py-20">
       <div className="container mx-auto px-6">
-        <h2 className="section-title text-center mb-12">Events</h2>
+        <h2 className="section-title text-center mb-12">Grand Arena</h2>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {events.map((event) => (
