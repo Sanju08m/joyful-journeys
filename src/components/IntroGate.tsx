@@ -78,7 +78,7 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
               playsInline
               loop
               preload="auto"
-              className="w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 object-contain rounded-full pointer-events-none"
+              className="w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 object-cover rounded-full pointer-events-none"
             >
               <source src="/videos/logpose.mp4" type="video/mp4" />
             </video>
@@ -103,7 +103,7 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
             loop
             muted
             playsInline
-            className="w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 object-contain rounded-full"
+            className="w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 object-cover rounded-full"
           >
             <source src="/videos/logpose.mp4" type="video/mp4" />
           </video>
