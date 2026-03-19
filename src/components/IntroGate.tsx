@@ -47,7 +47,7 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
         setPhase("breaking");
         setTimeout(() => {
           setPhase("video");
-        }, 1200);
+        }, 1600);
       }, 4000);
     }
   }, [phase]);
