@@ -15,7 +15,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
-        <h2 className="section-title text-center mb-12">Contact Us</h2>
+        <h2 className="section-title text-center mb-12">Contact the Crew</h2>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
           {/* Student Coordinators */}

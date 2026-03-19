@@ -15,7 +15,7 @@ const Developers = () => {
   return (
     <section id="developers" className="py-20">
       <div className="container mx-auto px-6">
-        <h2 className="section-title text-center mb-12">Developers</h2>
+        <h2 className="section-title text-center mb-12">Log Pose Developers</h2>
 
         <div className="flex flex-wrap justify-center gap-8 max-w-2xl mx-auto">
           {developers.map((dev) => (
