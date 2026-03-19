@@ -6,6 +6,17 @@ interface IntroGateProps {
   onComplete: () => void;
 }
 
+const shardFragments = [
+  { clip: "polygon(0% 0%, 50% 0%, 50% 50%, 0% 50%)", tx: -140, ty: -120, rot: -35 },
+  { clip: "polygon(50% 0%, 100% 0%, 100% 50%, 50% 50%)", tx: 140, ty: -110, rot: 40 },
+  { clip: "polygon(0% 50%, 50% 50%, 50% 100%, 0% 100%)", tx: -130, ty: 130, rot: -45 },
+  { clip: "polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%)", tx: 150, ty: 120, rot: 50 },
+  { clip: "polygon(25% 0%, 75% 0%, 50% 50%)", tx: 10, ty: -160, rot: 20 },
+  { clip: "polygon(0% 25%, 50% 50%, 0% 75%)", tx: -170, ty: 5, rot: -30 },
+  { clip: "polygon(100% 25%, 50% 50%, 100% 75%)", tx: 170, ty: -10, rot: 35 },
+  { clip: "polygon(25% 100%, 75% 100%, 50% 50%)", tx: -15, ty: 160, rot: -25 },
+];
+
 const IntroGate = ({ onComplete }: IntroGateProps) => {
   const [phase, setPhase] = useState<Phase>("prompt");
   const [tapCount, setTapCount] = useState(0);
