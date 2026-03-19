@@ -89,11 +89,10 @@ const Chatbot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
-          style={{ background: "hsl(var(--gold))" }}
+          className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 overflow-hidden p-0 border-0"
           aria-label="Open chat"
         >
-          <MessageCircle className="w-6 h-6" style={{ color: "hsl(var(--background))" }} />
+          <img src={chatbotIcon} alt="Chat" className="w-full h-full object-cover" />
         </button>
       )}
 
