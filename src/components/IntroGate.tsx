@@ -122,13 +122,13 @@ const IntroGate = ({ onComplete }: IntroGateProps) => {
       )}
 
       {phase === "video" && (
-        <div className="w-full h-full relative animate-fade-in">
+        <div className="w-full h-full relative animate-fade-in flex items-center justify-center bg-black">
           <video
             ref={videoRef}
             autoPlay
             playsInline
             onEnded={handleVideoEnd}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain sm:object-cover"
           >
             <source src="/videos/intro.mp4" type="video/mp4" />
           </video>
