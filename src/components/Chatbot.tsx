@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
+import { X, Send } from "lucide-react";
+import chatbotIcon from "@/assets/chatbot-icon.jpeg";
 
 const faqData = [
   {
